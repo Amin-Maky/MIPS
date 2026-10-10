@@ -1,0 +1,30 @@
+MIPS/                       	# Main repository root
+  ├── benchmarks/              	# Software only (formerly firmware)
+  │   └── src/					# Source files 
+  │       ├── apk1
+  │       └── apk2
+  ├── rtl/                      	# Processor RTL only (no testbenches)
+  ├── tb/                       	# All verification sources
+  │   ├── sv/                   	# SystemVerilog testbenches
+  │   │   └── mips_tb.sv
+  │   └── cpp/                  	# Verilator testbenches
+  │       └── mips_tb.cpp
+  ├── sim/                      	# Simulation execution environment (Workspace)
+  │   ├── Makefile              	# Makefile for Verilator simulation
+  │   └── filelists/
+  │       └── mips_filelists.f
+  ├── scripts/                 	# Helper scripts
+  │   └── block-diagram			# Generating block-diagrams
+  ├── fpga/
+  │   ├── vivado              	# Vivado Tcl scripts
+  │   │   └── mips_prj.tcl
+  │   ├── ISE                	# ISE Tcl scripts
+  │   │   └── mips_prj.tcl
+  │   ├── constraints
+  │   │   └── mips_ooc.xdc
+  │   └── build/                	# (gitignored) All Vivado/ISE outputs generated here
+  │       ├── vivado_prj_mips/
+  │       └── ise_prj_mips/
+  ├── README.md                 	# Main README
+  ├── Makefile                  	# Main Makefile
+  └── .git
