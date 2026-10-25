@@ -1,30 +1,39 @@
-MIPS/                       	# Main repository root
-  ├── benchmarks/              	# Software only (formerly firmware)
-  │   └── src/					# Source files 
-  │       ├── apk1
-  │       └── apk2
-  ├── rtl/                      	# Processor RTL only (no testbenches)
-  ├── tb/                       	# All verification sources
-  │   ├── sv/                   	# SystemVerilog testbenches
-  │   │   └── mips_tb.sv
-  │   └── cpp/                  	# Verilator testbenches
-  │       └── mips_tb.cpp
-  ├── sim/                      	# Simulation execution environment (Workspace)
-  │   ├── Makefile              	# Makefile for Verilator simulation
-  │   └── filelists/
-  │       └── mips_filelists.f
-  ├── scripts/                 	# Helper scripts
-  │   └── block-diagram			# Generating block-diagrams
+MIPS/                       		# Main repository root
   ├── fpga/
-  │   ├── vivado              	# Vivado Tcl scripts
+  │   ├── vivado              		# Vivado Tcl scripts
   │   │   └── mips_prj.tcl
-  │   ├── ISE                	# ISE Tcl scripts
+  │   ├── ISE                		# ISE Tcl scripts
   │   │   └── mips_prj.tcl
   │   ├── constraints
   │   │   └── mips_ooc.xdc
   │   └── build/                	# (gitignored) All Vivado/ISE outputs generated here
   │       ├── vivado_prj_mips/
   │       └── ise_prj_mips/
+  ├── rtl/                      	# Processor RTL only (no testbenches)
+  ├── scripts/                 		# Helper scripts
+  │   └── block-diagram			# Generating block-diagrams
+  ├── sim/                      	# Simulation execution environment (Workspace)
+  │   ├── filelists/
+  │   |   └── mips_filelists.f
+  │   ├── logs/				# (gitignored)
+  │   ├── work/				# (gitignored)
+  │   ├── cosim_runner.py       	# Runs Assembler + ISS + RTL Sim & diffs logs
+  │   └── Makefile              	# Makefile for Verilator simulation + Targets: make rtl_sim, make iss, make cosim
+  ├── sw/ 				# Software only (formerly firmware)
+  │   ├── tests/ 
+  │   |   ├── app1
+  │   |   └── app2
+  │   └── build/ 			# (gitignored)
+  ├── tb/                       	# Verification testbenches
+  │   ├── sv/                   	# SystemVerilog testbenches
+  │   │   └── mips_tb.sv
+  │   └── cpp/                  	# Verilator testbenches
+  │       └── mips_tb.cpp
+  ├── tools/                    	# Python Toolchain & Golden Model
+  │   ├── __init__.py
+  │   ├── isa_defs.py           	# Shared ISA opcodes, functs, and register maps
+  │   ├── assembler.py          	# 2-pass Assembler (reads .asm -> writes .hex)
+  │   └── mips_iss.py           	# Golden Model ISS (reads .hex -> writes iss_trace.log)
   ├── README.md                 	# Main README
   ├── Makefile                  	# Main Makefile
   └── .git
