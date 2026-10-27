@@ -1,0 +1,103 @@
+# ==========================================
+# Project Specific Build & Sim Directories
+# ==========================================
+fpga/build/
+sim/logs/
+sim/work/
+sw/build/
+
+# ==========================================
+# Verilator & RTL Simulation Artifacts
+# (In case anything spills outside sim/work or sim/logs)
+# ==========================================
+sim/obj_dir/
+obj_dir/
+*.vcd
+*.fst
+*.wlf
+*.ghw
+*.log
+*.dmp
+*.jou
+*.str
+transcript
+vsim.wlf
+
+# ==========================================
+# Xilinx Vivado & ISE Stray Files
+# (If Tcl scripts are accidentally run outside fpga/build/)
+# ==========================================
+*.jou
+*.log
+*.str
+*.Xil/
+.Xil/
+vivado*.backup.*
+iseconfig/
+xlnx_auto_0_xdb/
+_ngo/
+_xmsgs/
+*.bgn
+*.bit
+*.drc
+*.ncd
+*.ngc
+*.ngd
+*.ngr
+*.pad
+*.par
+*.pcf
+*.prj
+*.ptwx
+*.stx
+*.syr
+*.twr
+*.twx
+*.unroutes
+*.ut
+*.xpi
+*.xst
+
+# ==========================================
+# Software & Assembler Outputs
+# (If generated directly inside sw/tests/ or tools/)
+# ==========================================
+sw/**/*.hex
+sw/**/*.bin
+sw/**/*.elf
+sw/**/*.mem
+sw/**/*.dump
+iss_trace.log
+
+# ==========================================
+# Python (for tools/ and sim/cosim_runner.py)
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+venv/
+ENV/
+
+# ==========================================
+# C++ / Verilator Compiled Binaries & Objects
+# ==========================================
+*.o
+*.d
+*.a
+*.so
+*.exe
+*.out
+
+# ==========================================
+# OS & Editor Specific Files
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
