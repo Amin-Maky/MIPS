@@ -4,12 +4,12 @@ module alu_32b(
 	input wire [31:0]  input_A,input_B ,
 	input wire [3:0] op,
 	input [5:0] func,
-	output reg Zero,					//Zero-branch
+	output reg Zero,					//branch
 	output reg [31:0] alu_result	
 );
     always @(*) begin
-        Zero = 1'b0;     // Default value
-        alu_result = 32'd0; // Default value
+        Zero = 1'b0;    
+        alu_result = 32'd0; 
 
         case (op)
             4'b0000: // R_type
@@ -31,11 +31,11 @@ module alu_32b(
 				4'b0101: alu_result = input_A + input_B; //lw
             4'b0111: begin
                 Zero = (input_A == input_B) ? 1'b1 : 1'b0;
-                alu_result = 32'd0; // Explicitly set alu_result
+                alu_result = 32'd0; 
 			end
             4'b1000: begin
                 Zero = (input_A != input_B) ? 1'b1 : 1'b0;
-                alu_result = 32'd0; // Explicitly set alu_result
+                alu_result = 32'd0; 
 			end
             default: begin
                 alu_result = 32'd0;
