@@ -34,5 +34,8 @@ INSTRUCTIONS = {
     # J-Type: j target
     "j":    {"type": "J", "opcode": 0x02},
     "jal":  {"type": "J", "opcode": 0x03},
+
+    # System / Halt
+    "halt": {"type": "H", "opcode": 0x3F},
 }
 

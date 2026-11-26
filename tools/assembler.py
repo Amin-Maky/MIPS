@@ -63,9 +63,12 @@ for pc, clean_line in instructions_list:
         continue
     
     info = INSTRUCTIONS[instruction_name]
-    inst_type = info["type"]
-    args_part = parts[1]
-    operands = [op.strip() for op in args_part.split(",")]
+    inst_type = info["type"] 
+    if len(parts) > 1:
+        args_part = parts[1]
+        operands = [op.strip() for op in args_part.split(",")]
+    else:
+        operands = []
 
     if inst_type == "R":
         # MIPS R-Type: rd, rs, rt -> funct & opcode=0rd = REG_MAP[operands[0]]
@@ -122,6 +125,11 @@ for pc, clean_line in instructions_list:
         # print(f"{instruction_name} is a J-Type instruction (opcode={hex(info['opcode'])})")
         # print(f"binary_code:{binary_code}")
         # print(binary_code)
+    elif inst_type == "H":
+        # Halt instruction: opcode = 0x3F (111111), rest are zeros
+        machine_code = (info["opcode"] << 26)
+        binary_code = f"{machine_code:032b}"
+
 
     print(binary_code)
     output_lines.append(binary_code)

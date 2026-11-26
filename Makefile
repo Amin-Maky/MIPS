@@ -7,6 +7,7 @@ SIM_DIR        := sim
 SIM_WORK_DIR   := $(SIM_DIR)/work
 SIM_LOGS_DIR   := $(SIM_DIR)/logs
 SW_BUILD_DIR   := sw/build
+HEX_FILE := sw/build/program.txt
 
 # ==========================================
 # Clean Targets
@@ -55,3 +56,6 @@ clean_all: clean clean_fpga
 asm:
 	python3 tools/assembler.py $(APP)
 
+run_iss: asm
+	@echo "[ISS] Running simulation on $(HEX_FILE)..."
+	python3 tools/mips_iss.py $(HEX_FILE)
