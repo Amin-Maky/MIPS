@@ -14,6 +14,7 @@ branch:
     beq a4, a1, branch
     
     # --- Finish Our Custom APK ---
+halt
 
 loop:
     j loop

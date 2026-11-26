@@ -143,6 +143,10 @@ class MipsISS:
                 # Jump address is typically (address << 2)
                 self.pc = decoded["address"]
 
+            case 0x3F:  # HALT (opcode 111111)
+                self.halted = True
+                print("Simulation halted by HALT instruction.")
+
             case _:
                 # Handle unknown opcode (default)
                 pass
@@ -161,6 +165,7 @@ class MipsISS:
                     break
 
                 if self.pc not in self.mem:
+                    print(f"Program finished: PC {hex(self.pc)} out of bounds.")
                     self.halted = True
                     break
 
