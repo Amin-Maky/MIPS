@@ -1,11 +1,12 @@
 `timescale 1ns / 1ps
 
-module ControlUnit( opcode, ALUop, Branch, RegWrite, MemRead, MemWrite, MemtoReg, ALUSrc, RegDst, Jump );
+module ControlUnit( opcode, ALUop, Branch, RegWrite, MemRead, MemWrite, MemtoReg, ALUSrc, RegDst, Jump,exit_o);
 	
 	input  [5:0] opcode;
 	output [3:0] ALUop;
 	output Branch, RegWrite, MemRead, MemWrite, MemtoReg, ALUSrc, RegDst, Jump;
-
+	output reg exit_o=1'b0;
+	
 	reg [11:0] Control_Signal;
 	 
 	always @(*) begin
@@ -20,6 +21,10 @@ module ControlUnit( opcode, ALUop, Branch, RegWrite, MemRead, MemWrite, MemtoReg
 			6'b000111 : Control_Signal = 12'b011110000100; // beq
 			6'b001000 : Control_Signal = 12'b100010000100; // bne
 			6'b001001 : Control_Signal = 12'b100100000001; // j
+			6'b111111 : begin
+							Control_Signal = 12'b000000000000;// Custom HALT
+							exit_o = 1'b1;
+							end
 			default   : Control_Signal = 12'b000000000000; 
 		endcase
 	end
